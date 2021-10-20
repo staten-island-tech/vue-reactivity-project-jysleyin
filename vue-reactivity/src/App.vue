@@ -1,7 +1,9 @@
 <template>
   <div id="app">
    <h1>Mama's Sandwicheria</h1>
-    <li v-for = "piece in pieces" :key="piece"> <button> {{ piece }} </button> </li>
+    <li v-for = "piece in pieces" :key="piece" @click="addClick()"> <button> {{ piece }} </button> </li>
+    <div class="list"></div>
+    <img src="./assets/BREAD.png">
   </div>
 </template>
 
@@ -16,11 +18,19 @@ export default {
     "bread",
     "tomato",
     "meat",
-    "lettuce"
+    "lettuce",
+    "cheese",
+    "sauce"
   ]
 
   }
   },
+  methods: {
+    addClick: function(list) {
+      list.style.display = "block";
+    }
+  },
+
   components: {
   }
 }
@@ -36,5 +46,10 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
   list-style-type: none;
+
+}
+
+.list {
+    display: none;
 }
 </style>
