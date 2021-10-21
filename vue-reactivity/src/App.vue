@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
+  <div name="app">
    <h1>Mama's Sandwicheria</h1>
-    <li v-for = "piece in pieces" :key="piece" @click="addClick()"> <button> {{ piece }} </button> </li>
+    <li v-for = "(piece,index) in pieces" v-bind:key="piece.id" @click="addClick()"> <button> {{ piece.name }} </button> </li>
     <div class="list"></div>
     <img src="./assets/BREAD.png">
   </div>
@@ -14,20 +14,42 @@ export default {
   name: 'App',
   data () {
   return {
+    selectedPiece: 0,
   pieces: [
-    "bread",
-    "tomato",
-    "meat",
-    "lettuce",
-    "cheese",
-    "sauce"
+    {
+    name: "bread",
+    id: 1,
+    },
+    {
+    name: "tomato",
+    id: 2,
+    },
+    {
+    name: "meat",
+    id: 3,
+    },
+    {
+    name: "lettuce",
+    id: 4,
+    },
+    {
+    name: "cheese",
+    id: 5,
+    },
+    {
+    name: "sauce",
+    id: 6
+    }
   ]
 
   }
   },
   methods: {
-    addClick: function(list) {
-      list.style.display = "block";
+    updateProduct(index){
+    this.selectedPiece = index;
+    },
+    addClick: function() {
+      alert('filler')
     }
   },
 
