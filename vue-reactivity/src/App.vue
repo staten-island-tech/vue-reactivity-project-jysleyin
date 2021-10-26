@@ -1,7 +1,7 @@
 <template>
   <div id="app">
    <h1>Mama's Sandwicheria</h1>
-    <div id="sandwich" v-for = "piece in pieces" v-bind:key="piece.id" @click="addClick(piece.imgURL)"> <button> {{ piece.name }} </button> </div>
+    <div id="sandwich" v-for = "(piece, index) in pieces" v-bind:key="piece.id" @click="addClick(index)"> <button> {{ piece.name }} </button> </div>
     <!-- <div id="food"><img :src= pieces.imgURL></div> -->
     <div class="sandwich-image">
     <img :src = "image"/>
@@ -11,15 +11,15 @@
 
 <script>
 
-import image from "./assets/BREAD.png"
+// import image from "./assets/BREAD.png"
 
 
 export default {
   name: 'App',
   data () {
   return {
-    image: image,
-    // selectedPiece: 0,
+    // image: image,
+    selectedImage: 0,
   pieces: [
     {
     name: "bread",
@@ -56,16 +56,19 @@ export default {
   }
   },
   methods: {
-    // updateProduct(index){
-    // this.selectedPiece = index;
-    // },
-    
-    addClick: function(imgURL) {
-     this.image = imgURL
+ 
+    addClick(index){
+     this.selectedImage = index;
+     console.log(index)
     }
   },
 
   components: {
+  },
+  computed: {
+    image() {
+      return this.pieces[this.selectedImage].imgURL
+    }
   }
 }
 
