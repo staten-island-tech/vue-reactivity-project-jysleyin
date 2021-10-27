@@ -2,7 +2,7 @@
   <div id="app">
    <h1>Mama's Sandwicheria</h1>
     <div id="sandwich" v-for = "(piece, index) in pieces" v-bind:key="piece.id" @click="addClick(index)"> <button> {{ piece.name }} </button> </div>
-    <!-- <div id="food"><img :src= pieces.imgURL></div> -->
+
     <div class="sandwich-image">
     <img :src = "image"/>
     </div>
@@ -11,7 +11,6 @@
 
 <script>
 
-// import image from "./assets/BREAD.png"
 
 
 export default {
@@ -51,15 +50,24 @@ export default {
     id: 6,
     imgURL: require('./assets/SAUCE.png')
     }
-  ]
+  ],
+
+  sandwich: []
 
   }
   },
   methods: {
- 
+    
+    buildWich(index){
+      this.sandwich.push(index)
+    },
+
     addClick(index){
+    this.$emit('add-click');
      this.selectedImage = index;
      console.log(index)
+
+
     }
   },
 
