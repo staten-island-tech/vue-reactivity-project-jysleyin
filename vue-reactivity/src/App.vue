@@ -1,9 +1,12 @@
 <template>
   <div id="app">
    <h1>Mama's Sandwicheria</h1>
-    <div id="sandwich" v-for = "(piece, index) in pieces" v-bind:key="piece.id" @click="addClick(index)"> <button> {{ piece.name }} </button> </div>
-
-    <div class="sandwich-image">
+    <div id="sandwich" v-for = "(piece, index) in pieces" v-bind:key="piece.id" >
+       <button @click="addClick(index)"> {{ piece.name }} </button> 
+    </div>
+    <div class="sandwich-image" > 
+      
+      <!-- @add-click = "buildWich" -->
     <img :src = "image"/>
     </div>
   </div>
@@ -63,19 +66,22 @@ export default {
     },
 
     addClick(index){
-    this.$emit('add-click');
+    // this.$emit('add-click');
      this.selectedImage = index;
      console.log(index)
-
-
+    
+    // index.insertAdjacentHTML("beforebegin", this.pieces[this.selectedImage].imgURL)
     }
+
   },
 
   components: {
+
   },
   computed: {
     image() {
       return this.pieces[this.selectedImage].imgURL
+      
     }
   }
 }
@@ -94,13 +100,13 @@ background-color: tan;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-  list-style-type: none;
   background-color: white;  
 
 }
 
 button {
   font-size: 20px;
+
 }
 
 
