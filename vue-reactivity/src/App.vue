@@ -4,11 +4,8 @@
     <div id="sandwich" v-for = "(piece, index) in pieces" v-bind:key="piece.id" >
        <button @click="addClick(index)"> {{ piece.name }} </button> 
     </div>
-    <div class="sandwich-image" > 
-      
-      <!-- @add-click = "buildWich" -->
-    <img :src = "image"/>
-    </div>
+
+    <img class="sandwich-image" v-for = "piece in sandwich" :key="piece.id" :src = "piece.imgURL"/>
   </div>
 </template>
 
@@ -55,22 +52,18 @@ export default {
     }
   ],
 
-  sandwich: []
+  sandwich: [],
 
   }
   },
   methods: {
-    
-    buildWich(index){
-      this.sandwich.push(index)
-    },
 
     addClick(index){
-    // this.$emit('add-click');
      this.selectedImage = index;
      console.log(index)
-    
-    // index.insertAdjacentHTML("beforebegin", this.pieces[this.selectedImage].imgURL)
+     this.sandwich.push(this.pieces[index])
+     console.log(this.sandwich)
+     document.querySelectorAll(".sandwich-image").style.transform = translateY()
     }
 
   },
@@ -101,13 +94,25 @@ background-color: tan;
   color: #2c3e50;
   margin-top: 60px;
   background-color: white;  
-
+  position: relative;
 }
 
 button {
   font-size: 20px;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+
 
 }
+
+.sandwich-image {
+  position: absolute;
+  margin: 0 auto;
+  
+}
+
 
 
 </style>
