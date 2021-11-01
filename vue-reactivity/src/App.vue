@@ -1,11 +1,15 @@
 <template>
   <div id="app">
    <h1>Mama's Sandwicheria</h1>
+
     <div id="sandwich" v-for = "(piece, index) in pieces" v-bind:key="piece.id" >
        <button @click="addClick(index)"> {{ piece.name }} </button> 
     </div>
 
-    <img class="sandwich-image" v-for = "piece in sandwich" :key="piece.id" :src = "piece.imgURL"/>
+    <div class="thing">
+      <img class="sandwich-image" v-for = "piece in sandwich" :key="piece.id" :src = "piece"/>
+    </div>
+  
   </div>
 </template>
 
@@ -61,9 +65,10 @@ export default {
     addClick(index){
      this.selectedImage = index;
      console.log(index)
-     this.sandwich.push(this.pieces[index])
+     this.sandwich.push(this.pieces[index].imgURL)
      console.log(this.sandwich)
-    //  document.querySelectorAll(".sandwich-image").style.transform = translateY(5);
+    document.querySelector(".sandwich-image").style.transform = "translateY(4rem)";
+    
     }
 
   },
@@ -92,19 +97,23 @@ background-color: tan;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin: auto 0;
   background-color: white;  
   position: relative;
 }
 
-button {
-  font-size: 20px;
+#sandwich {
+  display: flex;
   text-align: center;
   align-items: center;
-  display: flex;
   justify-content: space-evenly;
+  flex-direction: row;
 
 
+}
+
+button {
+  font-size: 1.25rem;
 }
 
 .sandwich-image {
@@ -113,6 +122,9 @@ button {
   
 }
 
+img {
+width: 25rem;
+}
 
 
 </style>
