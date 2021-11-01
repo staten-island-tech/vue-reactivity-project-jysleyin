@@ -63,7 +63,7 @@ export default {
      console.log(index)
      this.sandwich.push(this.pieces[index])
      console.log(this.sandwich)
-     document.querySelectorAll(".sandwich-image").style.transform = translateY()
+    //  document.querySelectorAll(".sandwich-image").style.transform = translateY()
     }
 
   },
